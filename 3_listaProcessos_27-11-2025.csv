@@ -1,28 +1,28 @@
-Nome,MediaCPU,MediaRAM,MediaBytesLidos,MediaBytesEscritos,MediaTempoVida,QuantidadeProcessos
-Generic_System_Process,0.28,0.0,22435.51,0.0,1849.6240213824856,155
-Kernel_Event_Worker_Core1,0.36,0.0,0.0,0.0,2423.4883119761944,16
-Containerized_Environments_Mgr,0.24,0.0,0.0,0.0,2424.4751316238853,17
-Kernel_Event_Worker_Core3,0.2,0.0,0.0,0.0,2379.9917693138123,2
-Kernel_Event_Worker_Unbound,0.39,0.0,0.0,0.0,2406.1142120626237,9
-Kernel_Memory_Worker,0.2,0.0,0.0,0.0,812.2399334907532,1
-HW_Interrupt_Driver_Wifi_Sensor,1.96,0.0,0.0,0.0,2421.386250734329,19
-Artificial_Inteligence_Translating,5.63,0.0,2.246870016E9,4.66051072E7,1130.6201185107232,20
-Kernel_Core_Migration_Handler,0.2,0.0,0.0,0.0,2416.985421712582,13
-HW_Interrupt_Driver_A,1.19,0.0,0.0,0.0,2425.1259288447245,14
-Artificial_Inteligence_Mapping,2.28,0.0,827392.0,122060.8,60.92450259923935,20
-SensorFusion_DB_Manager,1.08,0.0,0.0,0.0,2409.898662531376,20
-Kernel_Scheduler_RCU,0.23,0.0,0.0,0.0,2424.8951551914215,18
-GPU_Display_Driver_Kernel_I915,0.4,0.0,0.0,0.0,1120.331466436386,3
-InterProcess_Comms_Bus,0.23,0.0,0.0,0.0,2417.244496524334,12
-Vehicle_HMI_Display_Driver,10.08,0.0,5705728.0,110592.0,2402.991398537159,20
-Accessibility_Feature_Service,0.2,0.0,0.0,0.0,2393.948305606842,4
-Main_Control_Software,0.75,0.0,0.0,2212659.2,1017.1210035800934,20
-Browser_Module,2.7,0.0,2.907777997E7,1.001229435E7,1596.1359128444753,282
-System_Integration_Layer_GTK,0.2,0.0,679936.0,0.0,2361.72587826252,10
-Autonomous_Navigation_System,9.63,0.0,3.507712E7,622592.0,2402.263266956806,20
-Thermal_Management_Unit_Driver,0.29,0.0,0.0,0.0,2418.1487823486327,15
-System_Integration_Layer,0.23,0.0,966656.0,0.0,2362.929931804538,16
-GPU_Buffer_Flip_Handler,0.47,0.0,0.0,0.0,812.3763705662319,7
-Network_Discovery_Service,0.48,0.0,0.0,0.0,2420.2289986735896,19
-Memory_Management_Unit,0.47,0.0,0.0,0.0,2381.107300122579,3
-Artificial_Inteligence_Constructing,3.2,0.0,2.734114643E7,1.215061079E7,464.47131515854034,201
+Nome,Cpu,Ram,BytesLidos,BytesEscritos,TempoVida,TempoVidaFormatado
+Generic_System_Process,0.28,0.0,22435.51,0.0,1849.6240213824856,30min 50s
+Kernel_Event_Worker_Core1,0.36,0.0,0.0,0.0,2423.4883119761944,40min 23s
+Containerized_Environments_Mgr,0.24,0.0,0.0,0.0,2424.4751316238853,40min 24s
+Kernel_Event_Worker_Core3,0.2,0.0,0.0,0.0,2379.9917693138123,39min 40s
+Kernel_Event_Worker_Unbound,0.39,0.0,0.0,0.0,2406.1142120626237,40min 6s
+Kernel_Memory_Worker,0.2,0.0,0.0,0.0,812.2399334907532,13min 32s
+HW_Interrupt_Driver_Wifi_Sensor,1.96,0.0,0.0,0.0,2421.386250734329,40min 21s
+Artificial_Inteligence_Translating,5.63,0.0,2.246870016E9,4.66051072E7,1130.6201185107232,18min 51s
+Kernel_Core_Migration_Handler,0.2,0.0,0.0,0.0,2416.985421712582,40min 17s
+HW_Interrupt_Driver_A,1.19,0.0,0.0,0.0,2425.1259288447245,40min 25s
+Artificial_Inteligence_Mapping,2.28,0.0,827392.0,122060.8,60.92450259923935,1min 1s
+SensorFusion_DB_Manager,1.08,0.0,0.0,0.0,2409.898662531376,40min 10s
+Kernel_Scheduler_RCU,0.23,0.0,0.0,0.0,2424.8951551914215,40min 25s
+GPU_Display_Driver_Kernel_I915,0.4,0.0,0.0,0.0,1120.331466436386,18min 40s
+InterProcess_Comms_Bus,0.23,0.0,0.0,0.0,2417.244496524334,40min 17s
+Vehicle_HMI_Display_Driver,10.08,0.0,5705728.0,110592.0,2402.991398537159,40min 3s
+Accessibility_Feature_Service,0.2,0.0,0.0,0.0,2393.948305606842,39min 54s
+Main_Control_Software,0.75,0.0,0.0,2212659.2,1017.1210035800934,16min 57s
+Browser_Module,2.7,0.0,2.907777997E7,1.001229435E7,1596.1359128444753,26min 36s
+System_Integration_Layer_GTK,0.2,0.0,679936.0,0.0,2361.72587826252,39min 22s
+Autonomous_Navigation_System,9.63,0.0,3.507712E7,622592.0,2402.263266956806,40min 2s
+Thermal_Management_Unit_Driver,0.29,0.0,0.0,0.0,2418.1487823486327,40min 18s
+System_Integration_Layer,0.23,0.0,966656.0,0.0,2362.929931804538,39min 23s
+GPU_Buffer_Flip_Handler,0.47,0.0,0.0,0.0,812.3763705662319,13min 32s
+Network_Discovery_Service,0.48,0.0,0.0,0.0,2420.2289986735896,40min 20s
+Memory_Management_Unit,0.47,0.0,0.0,0.0,2381.107300122579,39min 41s
+Artificial_Inteligence_Constructing,3.2,0.0,2.734114643E7,1.215061079E7,464.47131515854034,7min 44s

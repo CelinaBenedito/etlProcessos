@@ -3,10 +3,10 @@ package school.sptech;
 public class Processo {
     private String nome,timestamp;
     private Integer pid;
-    private Double cpu, ram, tempoVida;
-    private Long bytesLidos, bytesEscritos;
+    private Double cpu, ram;
+    private Double bytesLidos, bytesEscritos, tempoVida;
 
-    public Processo(String timestamp, Integer pid, String nome, Double cpu, Double ram,Double tempoVida, Long bytesLidos, Long bytesEscritos) {
+    public Processo(String timestamp, Integer pid, String nome, Double cpu, Double ram,Double tempoVida, Double bytesLidos, Double bytesEscritos) {
         this.timestamp = timestamp;
         this.pid = pid;
         this.nome = nome;
@@ -27,6 +27,14 @@ public class Processo {
                 ", bytesLidos " + bytesLidos +
                 ", bytesEscritos " + bytesEscritos +
                 '}';
+    }
+
+    public Double getBytesLidos() {
+        return bytesLidos;
+    }
+
+    public Double getBytesEscritos() {
+        return bytesEscritos;
     }
 
     public Double getTempoVida() {
@@ -53,11 +61,11 @@ public class Processo {
         this.pid = pid;
     }
 
-    public void setBytesLidos(Long bytesLidos) {
+    public void setBytesLidos(Double bytesLidos) {
         this.bytesLidos = bytesLidos;
     }
 
-    public void setBytesEscritos(Long bytesEscritos) {
+    public void setBytesEscritos(Double bytesEscritos) {
         this.bytesEscritos = bytesEscritos;
     }
 
@@ -85,13 +93,5 @@ public class Processo {
         this.ram = ram;
     }
 
-    public long getBytesLidos() {
-        return bytesLidos;
-    }
-
-
-    public long getBytesEscritos() {
-        return bytesEscritos;
-    }
 
 }
