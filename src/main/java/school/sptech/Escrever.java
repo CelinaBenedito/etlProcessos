@@ -15,7 +15,9 @@ public class Escrever {
     private String nome, timestamp;
     private Double cpu,ram,disco;
     private Integer pid;
-    private Double bytesLidos,bytesEscritos,tempoVida;
+    private Double bytesLidos,bytesEscritos,tempoVida,desvioPadraoRam;
+
+
     private static final DecimalFormat df;
     private static final double bytesParaMB = 1024.0 * 1024.0;
 
@@ -24,15 +26,18 @@ public class Escrever {
         DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
         df = new DecimalFormat("#.##", symbols);
     }
-    public Escrever(String nome, Double cpu, Double ram, Double bytesLidos, Double bytesEscritos, Double tempoVida) {
+    public Escrever(String nome, Double cpu, Double ram,Double desvioPadraoRam, Double bytesLidos, Double bytesEscritos, Double tempoVida) {
         this.nome = nome;
         this.cpu = cpu;
         this.ram = ram;
-        this.bytesLidos = bytesLidos;
-        this.bytesEscritos = bytesEscritos;
+        this.desvioPadraoRam = desvioPadraoRam;
         this.tempoVida = tempoVida;
+        if(bytesLidos!= null && bytesEscritos != null){
+            Double bytesTotais = bytesLidos + bytesEscritos;
+            Double megabytesTotais = bytesTotais/ bytesParaMB;
+            this.disco = megabytesTotais;
+        }
     }
-
 
     public Escrever( String timestamp, Integer pid,String nome, Double cpu, Double ram, Double tempoVida, Double bytesLidos, Double bytesEscritos) {
         this.pid = pid;
@@ -79,6 +84,7 @@ public class Escrever {
         if (nome != null) colunas.add("Nome");
         if (cpu != null) colunas.add("Cpu");
         if (ram != null) colunas.add("Ram");
+        if (desvioPadraoRam != null) colunas.add("DesvioPadraoRam");
         if (disco != null) colunas.add("Disco(MB)");
         if (bytesLidos != null) colunas.add("BytesLidos");
         if (bytesEscritos != null) colunas.add("BytesEscritos");
@@ -94,6 +100,7 @@ public class Escrever {
         if (nome != null) valoresParaEscrever.add(nome);
         if (cpu != null) valoresParaEscrever.add(String.valueOf(cpu));
         if (ram != null) valoresParaEscrever.add(String.valueOf(ram));
+        if (desvioPadraoRam != null) valoresParaEscrever.add(String.valueOf(desvioPadraoRam));
         if (disco != null) valoresParaEscrever.add(df.format(disco));
         if (bytesLidos != null) valoresParaEscrever.add(String.valueOf(bytesLidos));
         if (bytesEscritos != null) valoresParaEscrever.add(String.valueOf(bytesEscritos));
