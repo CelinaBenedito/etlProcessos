@@ -3,17 +3,38 @@ package school.sptech;
 public class Processo {
     private String nome,timestamp;
     private Integer pid;
-    private Double cpu, ram;
+    private Double cpu, ram, tempoVida;
     private Long bytesLidos, bytesEscritos;
 
-    public Processo(String timestamp, Integer pid, String nome, Double cpu, Double ram, Long bytesLidos, Long bytesEscritos) {
+    public Processo(String timestamp, Integer pid, String nome, Double cpu, Double ram,Double tempoVida, Long bytesLidos, Long bytesEscritos) {
         this.timestamp = timestamp;
         this.pid = pid;
         this.nome = nome;
         this.cpu = cpu;
         this.ram = ram;
+        this.tempoVida = tempoVida;
         this.bytesLidos = bytesLidos;
         this.bytesEscritos = bytesEscritos;
+    }
+
+    @Override
+    public String toString() {
+        return "Processo" + nome +
+                ", pid " + pid +
+                ", cpu " + cpu +
+                ", ram " + ram +
+                ", tempoVida " + tempoVida +
+                ", bytesLidos " + bytesLidos +
+                ", bytesEscritos " + bytesEscritos +
+                '}';
+    }
+
+    public Double getTempoVida() {
+        return tempoVida;
+    }
+
+    public void setTempoVida(Double tempoVida) {
+        this.tempoVida = tempoVida;
     }
 
     public String getTimestamp() {
