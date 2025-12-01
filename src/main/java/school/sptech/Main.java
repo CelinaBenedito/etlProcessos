@@ -8,35 +8,50 @@ import java.util.stream.Stream;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Iniciando o tratamento de dados...");
-        //Leitura dos arquivos de processos
-        Path diretorioAlvo = Paths.get("./3");
-        String termoFiltro = "processos";
-        List<Processo> processos = new ArrayList<>();
 
-        try(Stream<Path> paths = Files.list(diretorioAlvo)){
-            List<Path> arquivosCSV = paths
-                    .filter(Files::isRegularFile)
-                    .filter(p -> p.getFileName().toString().toLowerCase().contains(termoFiltro.toLowerCase()))
-                    .toList();
+    }
 
-            if (arquivosCSV.isEmpty()) {
-                System.out.println("Nenhum arquivo CSV encontrado na pasta '3' com o nome 'processos'.");
-                return;
-            }
-            for (Path arquivo : arquivosCSV) {
-                System.out.println("Processando arquivo: " + arquivo.getFileName());
-
-
-                lerEProcessarArquivo(arquivo, processos);
-
-            }
-            sumarizar(processos, "3_listaProcessos_27-11-2025.csv");
-            System.out.println("Arquivo principal escrito!");
-        } catch (IOException e) {
-            System.out.println("Erro ao acessar o diretório ou ler arquivo: " + e.getMessage());
-            e.printStackTrace();
+    public static class LeituraCSV{
+        private final ParametroDAO dao;
+        private final Conexao conexao;
+        public LeituraCSV(int fkModelo) {
+            dao = new ParametroDAO();
+            conexao = new Conexao();
+            dao.carregarParametrosDoBanco(conexao.getConexao(), fkModelo);
         }
+
+        public void processar(String caminhoEntrada, String caminhoSaida){
+            System.out.println("Iniciando o tratamento de dados...");
+            //Leitura dos arquivos de processos
+            Path diretorioAlvo = Paths.get(caminhoEntrada);
+            String termoFiltro = "processos";
+            List<Processo> processos = new ArrayList<>();
+
+            try(Stream<Path> paths = Files.list(diretorioAlvo)){
+                List<Path> arquivosCSV = paths
+                        .filter(Files::isRegularFile)
+                        .filter(p -> p.getFileName().toString().toLowerCase().contains(termoFiltro.toLowerCase()))
+                        .toList();
+
+                if (arquivosCSV.isEmpty()) {
+                    System.out.println("Nenhum arquivo CSV encontrado na pasta '3' com o nome 'processos'.");
+                    return;
+                }
+                for (Path arquivo : arquivosCSV) {
+                    System.out.println("Processando arquivo: " + arquivo.getFileName());
+
+
+                    lerEProcessarArquivo(arquivo, processos);
+
+                }
+                sumarizar(processos, "listaProcessos_27-11-2025.csv");
+                System.out.println("Arquivo principal escrito!");
+            } catch (IOException e) {
+                System.out.println("Erro ao acessar o diretório ou ler arquivo: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+
     }
 
 
@@ -70,7 +85,7 @@ public class Main {
                     Double.valueOf(campos[6]), //Disco
                     Double.valueOf(campos[7]), //BytesLidos
                     Double.valueOf(campos[8]) ); //BytesEscritos
-            e.escrever("3_mediaProcessos_27-11-2025.csv");
+            e.escrever("mediaProcessos_27-11-2025.csv");
             //Criando um objeto da classe Processo e adicionando a lista processos
             processos.add( new Processo(
                     campos[0],
