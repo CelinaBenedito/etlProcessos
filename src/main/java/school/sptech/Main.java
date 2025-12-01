@@ -88,14 +88,14 @@ public class Main {
             e.escrever("mediaProcessos_27-11-2025.csv");
             //Criando um objeto da classe Processo e adicionando a lista processos
             processos.add( new Processo(
-                    campos[0],
-                    Integer.valueOf(campos[1]),
-                    campos[2],
-                    Double.valueOf(campos[3]),
-                    Double.valueOf(campos[5]),
-                    Double.valueOf(campos[6]),
-                    Double.valueOf(campos[7]),
-                    Double.valueOf(campos[8]) ) );
+                    campos[0], //timestamp
+                    Integer.valueOf(campos[1]), //pid
+                    campos[2], //nome
+                    Double.valueOf(campos[3]), //cpu
+                    Double.valueOf(campos[5]), //ram
+                    Double.valueOf(campos[6]), //bytesLidos
+                    Double.valueOf(campos[7]), //bytesEscritos
+                    Double.valueOf(campos[8]) ) ); //tempo de vida
         }
     }catch(IOException e) {
         System.out.println("Erro ao ler arquivo: "+ e.getMessage());
@@ -134,6 +134,7 @@ public class Main {
             }
         System.out.println("Fim da sumarização!");
     }
+
     public static Double calcularDesvioPadrao(List<Double> valores) {
         if (valores == null || valores.isEmpty()) {
             return 0.0;
