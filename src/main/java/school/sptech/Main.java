@@ -2,6 +2,8 @@ package school.sptech;
 
 import java.io.*;
 import java.nio.file.*;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -24,27 +26,31 @@ public class Main {
             System.out.println("Iniciando o tratamento de dados...");
             //Leitura dos arquivos de processos
             Path diretorioAlvo = Paths.get(caminhoEntrada);
-            String termoFiltro = "processos";
+
+            //Iniciando o arquivo de processos
             List<Processo> processos = new ArrayList<>();
 
-            try(Stream<Path> paths = Files.list(diretorioAlvo)){
-                List<Path> arquivosCSV = paths
-                        .filter(Files::isRegularFile)
-                        .filter(p -> p.getFileName().toString().toLowerCase().contains(termoFiltro.toLowerCase()))
-                        .toList();
+            ZoneId horarioSP = ZoneId.of("America/Sao_Paulo");
+            String ano = String.format("%02d", LocalDate.now().getMonthValue());
+            String mes = String.format("%02d", LocalDate.now().getMonthValue());
+            int dia = LocalDate.now(horarioSP).getDayOfMonth();
 
-                if (arquivosCSV.isEmpty()) {
-                    System.out.println("Nenhum arquivo CSV encontrado na pasta '3' com o nome 'processos'.");
+            try(Stream<Path> paths = Files.list(diretorioAlvo)){
+
+                if (caminhoEntrada.isEmpty()) {
+                    System.out.println("Nenhum arquivo CSV encontrado na pasta com o nome 'processos'.");
                     return;
                 }
-                for (Path arquivo : arquivosCSV) {
+                for (Path arquivo : diretorioAlvo) {
                     System.out.println("Processando arquivo: " + arquivo.getFileName());
 
 
                     lerEProcessarArquivo(arquivo, processos);
 
                 }
-                sumarizar(processos, "listaProcessos_27-11-2025.csv");
+
+                sumarizar(processos, "listaProcessos_"+dia+"-"+mes+"-"+ano+".csv");
+
                 System.out.println("Arquivo principal escrito!");
             } catch (IOException e) {
                 System.out.println("Erro ao acessar o diretório ou ler arquivo: " + e.getMessage());
@@ -77,6 +83,7 @@ public class Main {
 
             campos[2] = novoNome;
             String nome = campos[2];
+            //Criando o objeto da classe Escrever para gerar o csv
             Escrever e = new Escrever( campos[0], //Timestamp
                     Integer.valueOf(campos[1]), //Pid
                     campos[2], //Nome
@@ -85,7 +92,9 @@ public class Main {
                     Double.valueOf(campos[6]), //Disco
                     Double.valueOf(campos[7]), //BytesLidos
                     Double.valueOf(campos[8]) ); //BytesEscritos
+
             e.escrever("mediaProcessos_27-11-2025.csv");
+
             //Criando um objeto da classe Processo e adicionando a lista processos
             processos.add( new Processo(
                     campos[0], //timestamp
@@ -97,6 +106,7 @@ public class Main {
                     Double.valueOf(campos[7]), //bytesEscritos
                     Double.valueOf(campos[8]) ) ); //tempo de vida
         }
+
     }catch(IOException e) {
         System.out.println("Erro ao ler arquivo: "+ e.getMessage());
     }
